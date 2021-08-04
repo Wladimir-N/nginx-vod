@@ -1,10 +1,10 @@
-FROM alpine:3.14
+FROM alpine:3.13.5 AS base_image
 FROM base_image AS build
 WORKDIR /nginx
 ARG NGINX_VERSION=1.21.1
 ARG VOD_MODULE_VERSION=1.28
 RUN apk add --no-cache curl build-base openssl openssl-dev zlib-dev linux-headers pcre-dev ffmpeg ffmpeg-dev && \
-    mkdir /nginx /nginx-vod-module && \
+    mkdir /nginx-vod-module && \
     curl -sL https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz | tar -C /nginx --strip 1 -xz && \
     curl -sL https://github.com/kaltura/nginx-vod-module/archive/refs/tags/${VOD_MODULE_VERSION}.tar.gz | tar -C /nginx-vod-module --strip 1 -xz && \
     ./configure --prefix=/usr/local/nginx \
