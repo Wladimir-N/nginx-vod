@@ -8,8 +8,8 @@ RUN apk add --no-cache curl build-base openssl openssl-dev zlib-dev linux-header
     curl -sL https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz | tar -C /nginx --strip 1 -xz && \
     curl -sL https://github.com/kaltura/nginx-vod-module/archive/refs/tags/${VOD_MODULE_VERSION}.tar.gz | tar -C /nginx-vod-module --strip 1 -xz && \
     ./configure --prefix=/usr/local/nginx \
-    		--add-module=../nginx-vod-module \
-		--with-http_slice_module
+		--add-module=../nginx-vod-module \
+		--with-http_slice_module \
 		--with-file-aio \
 		--with-threads \
 		--with-cc-opt="-O3" && \
